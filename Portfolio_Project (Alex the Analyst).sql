@@ -40,7 +40,7 @@ order by max_percent_population_infected desc
 -- Showing countries with the highest death count 
 Select location, max(cast(total_deaths as int)) as death_count	-- changing total_deaths from nvarchar25 into integer
 From Portfolio_Project..CovidDeaths
-where continent is not null										-- deleting locations consisting of group of countries, such as Asia or World
+where continent is not null					-- deleting locations consisting of group of countries, such as Asia or World
 group by location
 order by death_count desc
 
@@ -51,7 +51,7 @@ order by death_count desc
 -- Showing the continents with the highest death count per poulation
 Select continent, max(cast(total_deaths as int)) as death_count	-- changing total_deaths from nvarchar25 into integer
 From Portfolio_Project..CovidDeaths
-where continent is not null										-- deleting locations consisting of group of countries, such as Asia or World
+where continent is not null					-- deleting locations consisting of group of countries, such as Asia or World
 group by continent
 order by death_count desc
 
@@ -61,7 +61,7 @@ order by death_count desc
 Select date, sum(new_cases) as total_cases, sum(cast(new_deaths as int)) as total_deaths, sum(cast(new_deaths as int))/sum(new_cases)*100 as death_percentage
 From Portfolio_Project..CovidDeaths
 --Where location like '%indonesia%'
-where continent is not null										-- deleting locations consisting of group of countries, such as Asia or World
+where continent is not null					-- deleting locations consisting of group of countries, such as Asia or World
 group by date
 order by 1,2
 
